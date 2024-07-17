@@ -1,0 +1,9 @@
+RewriteEngine on
+RewriteCond %{THE_REQUEST} /([^.]+).php [NC]
+RewriteRule ^ /%1 [NC,L,R]
+Options +FollowSymLinks
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^ %{REQUEST_URI}.php [NC,L]
+DirectoryIndex AnaSayfa.php
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
